@@ -110,3 +110,12 @@ function accum(s) {
 
   return indexes.join('-')
 }
+
+
+// s="ZpglnRxqenU"
+function accum2(s) {
+  //split => 'Z'; 'p'...
+  //map => c = 'Z'; 'p'... / i = index
+  //repeat c.toLowerCase * i
+  return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-'); //"Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu")
+}
