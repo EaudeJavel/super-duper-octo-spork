@@ -89,3 +89,24 @@ function friend(friends){
   //filter elements which have a length of 4
   return friends.filter(l => l.length == 4)
 }
+
+
+// This time no story, no theory. The examples below show you how to write function accum:
+
+// Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
+
+function accum(s) {
+  const a = s.split('')
+  const indexes = []
+
+  for (let i = 0; i<a.length; i++) {
+    const b = a[i].repeat(i+1)
+    indexes.push(b.charAt(0).toUpperCase() + b.slice(1).toLowerCase())
+  }
+
+  return indexes.join('-')
+}
