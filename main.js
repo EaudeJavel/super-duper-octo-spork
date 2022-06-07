@@ -1,4 +1,3 @@
-
 // Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
 
 // []                                -->  "no one likes this"
@@ -119,3 +118,25 @@ function accum2(s) {
   //repeat c.toLowerCase * i
   return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-'); //"Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu")
 }
+
+
+// Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
+
+function moveZeros(arr) {
+  arr.map((z, i) => {
+    for (let i = 0; i< arr.length; i++) {
+      if (arr[i] === 0) {
+        arr.splice(i, 1)
+        arr.push(0)
+      }
+    }
+  })
+  return arr
+}
+
+//other
+const moveZeros = arr => [
+  ...arr.filter(n => n !== 0),
+  ...arr.filter(n => n === 0)
+];
