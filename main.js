@@ -164,3 +164,23 @@ function arrayDiff(a, b) {
 function array_diff(a, b) {
   return a.filter(e => !b.includes(e));
 }
+
+
+
+
+function generateStrongPassword (length) {
+  const password = []
+  const lower = 'abcdefghijklmnopqrstuvwxyz'
+  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const numbers = '0123456789'
+  const special = '!@#$%^&*()_+'
+
+  for (let i = 0; i < length; i++) {
+    password.push(lower[Math.floor(Math.random() * lower.length)])
+    password.push(upper[Math.floor(Math.random() * upper.length)])
+    password.push(numbers[Math.floor(Math.random() * numbers.length)])
+    password.push(special[Math.floor(Math.random() * special.length)])
+  }
+
+  return password.join('')
+}
