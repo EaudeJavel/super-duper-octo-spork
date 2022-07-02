@@ -111,11 +111,29 @@ function accum(s) {
   return indexes.join('-')
 }
 
-
 // s="ZpglnRxqenU"
 function accum2(s) {
   //split => 'Z'; 'p'...
   //map => c = 'Z'; 'p'... / i = index
   //repeat c.toLowerCase * i
   return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-'); //"Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu")
+}
+
+
+// Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+// It should remove all values from list a, which are present in list b keeping their order.
+// arrayDiff([1,2],[1]) == [2]
+// If a value is present in b, all of its occurrences must be removed from the other:
+// arrayDiff([1,2,2,2,3],[2]) == [1,3]
+
+function arrayDiff(a, b) {
+  const c = a.values()
+  const e = []
+
+  for(const i of c) {
+    if (!b.includes(i)) {
+      e.push(i)
+    }
+  }
+  return e
 }
