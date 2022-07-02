@@ -135,10 +135,10 @@ function moveZeros(arr) {
 }
 
 //other
-const moveZeros = arr => [
-  ...arr.filter(n => n !== 0),
-  ...arr.filter(n => n === 0)
-];
+// const moveZeros = arr => [
+//   ...arr.filter(n => n !== 0),
+//   ...arr.filter(n => n === 0)
+// ];
 
 
 // Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
@@ -182,34 +182,63 @@ function generateStrongPassword (length) {
   return password.join('')
 }
 
-// associate generateStrongPassword to a button
-const button = document.getElementById('button')
-button.addEventListener('click', () => {
-  const password = generateStrongPassword(10)
-  document.getElementById('password').innerHTML = password
-})
+// // associate generateStrongPassword to a button
+// const toto = document.getElementById('button')
+// toto.addEventListener('click', () => {
+//   const password = generateStrongPassword(10)
+//   document.getElementById('password').innerHTML = password
+// })
 
-
-
-//write a function that create a circle with a radius of 10px
-// function createCircle(radius) {
-//   const circle = document.createElement('div')
-//   circle.setAttribute('cx', '50')
-//   circle.setAttribute('cy', '50')
-//   circle.setAttribute('r', radius)
-//   return circle
+// //write a function that create a div with width and height of 20px, a radius of 10px and a background color of red
+// function createDiv(width, height) {
+//   const div = document.createElement('div')
+//   div.setAttribute('style', 'background-color: red; width: ' + width + 'px; height: ' + height + 'px; border-radius: 10px;')
+//   return div
 // }
 
-//write a function that create a div with width and height of 20px, a radius of 10px and a background color of red
-function createDiv(width, height) {
-  const div = document.createElement('div')
-  div.setAttribute('style', 'background-color: red; width: ' + width + 'px; height: ' + height + 'px; border-radius: 10px;')
-  return div
-}
+// const replaceCursorElement = document.getElementById('replaceCursor')
+//   replaceCursorElement.addEventListener('click', () => {
+//   const circle = createDiv(20, 20)
+//   document.body.appendChild(circle)
+//   document.body.style.cursor = "wait"
+// })
 
-const replaceCursorElement = document.getElementById('replaceCursor')
-  replaceCursorElement.addEventListener('click', () => {
-  const circle = createDiv(20, 20)
-  document.body.appendChild(circle)
-  document.body.style.cursor = "wait"
+
+// write a function that store the ingredients in local storage when ingredient is clicked
+const ingredients = ['eggs', 'milk', 'flour', 'sugar', 'chocolate', 'cocoa']
+const list = document.getElementById('list')
+const ul = document.createElement('ul')
+list.appendChild(ul)
+ingredients.forEach(ingredient => {
+  const li = document.createElement('li')
+  li.innerHTML = ingredient
+  ul.appendChild(li)
+  li.addEventListener('click', () => {
+    localStorage.setItem(ingredient, ingredient)
+    console.log(localStorage)
+  })
+})
+
+//write a function that retrieve the ingredients from local storage and display them in another list when a button is clicked
+const button = document.getElementById('button')
+button.addEventListener('click', () => {
+  const ul = document.createElement('ul')
+  ul.classList.add('customList')
+  list.appendChild(ul)
+  for (const key in localStorage) {
+    const listElement = document.createElement('li')
+    listElement.innerHTML = localStorage[key]
+    ul.appendChild(listElement)
+  }
+})
+
+//write a function that clear local storage and clear customList when a button is clicked
+const resetStorage = document.getElementById('resetStorage')
+resetStorage.addEventListener('click', () => {
+  localStorage.clear()
+  const customList = document.querySelectorAll('.customList')
+  for (let i = 0; i < customList.length; i++) {
+    const e = customList[i];
+    e.remove()
+  }
 })
