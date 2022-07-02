@@ -166,8 +166,6 @@ function array_diff(a, b) {
 }
 
 
-
-
 function generateStrongPassword (length) {
   const password = []
   const lower = 'abcdefghijklmnopqrstuvwxyz'
@@ -184,3 +182,35 @@ function generateStrongPassword (length) {
 
   return password.join('')
 }
+
+// associate generateStrongPassword to a button
+const button = document.getElementById('button')
+button.addEventListener('click', () => {
+  const password = generateStrongPassword(10)
+  document.getElementById('password').innerHTML = password
+})
+
+
+
+//write a function that create a circle with a radius of 10px
+// function createCircle(radius) {
+//   const circle = document.createElement('div')
+//   circle.setAttribute('cx', '50')
+//   circle.setAttribute('cy', '50')
+//   circle.setAttribute('r', radius)
+//   return circle
+// }
+
+//write a function that create a div with width and height of 20px, a radius of 10px and a background color of red
+function createDiv(width, height) {
+  const div = document.createElement('div')
+  div.setAttribute('style', 'background-color: red; width: ' + width + 'px; height: ' + height + 'px; border-radius: 10px;')
+  return div
+}
+
+const replaceCursorElement = document.getElementById('replaceCursor')
+  replaceCursorElement.addEventListener('click', () => {
+  const circle = createDiv(20, 20)
+  document.body.appendChild(circle)
+  document.body.style.cursor = "wait"
+})
