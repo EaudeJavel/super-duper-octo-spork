@@ -1,4 +1,3 @@
-
 // Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
 
 // []                                -->  "no one likes this"
@@ -120,6 +119,28 @@ function accum2(s) {
 }
 
 
+// Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
+
+function moveZeros(arr) {
+  arr.map((z, i) => {
+    for (let i = 0; i< arr.length; i++) {
+      if (arr[i] === 0) {
+        arr.splice(i, 1)
+        arr.push(0)
+      }
+    }
+  })
+  return arr
+}
+
+//other
+const moveZeros = arr => [
+  ...arr.filter(n => n !== 0),
+  ...arr.filter(n => n === 0)
+];
+
+
 // Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
 // It should remove all values from list a, which are present in list b keeping their order.
 // arrayDiff([1,2],[1]) == [2]
@@ -137,3 +158,58 @@ function arrayDiff(a, b) {
   }
   return e
 }
+
+//other
+function array_diff(a, b) {
+  return a.filter(e => !b.includes(e));
+}
+
+
+function generateStrongPassword (length) {
+  const password = []
+  const lower = 'abcdefghijklmnopqrstuvwxyz'
+  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const numbers = '0123456789'
+  const special = '!@#$%^&*()_+'
+
+  for (let i = 0; i < length; i++) {
+    password.push(lower[Math.floor(Math.random() * lower.length)])
+    password.push(upper[Math.floor(Math.random() * upper.length)])
+    password.push(numbers[Math.floor(Math.random() * numbers.length)])
+    password.push(special[Math.floor(Math.random() * special.length)])
+  }
+
+  return password.join('')
+}
+
+// associate generateStrongPassword to a button
+const button = document.getElementById('button')
+button.addEventListener('click', () => {
+  const password = generateStrongPassword(10)
+  document.getElementById('password').innerHTML = password
+})
+
+
+
+//write a function that create a circle with a radius of 10px
+// function createCircle(radius) {
+//   const circle = document.createElement('div')
+//   circle.setAttribute('cx', '50')
+//   circle.setAttribute('cy', '50')
+//   circle.setAttribute('r', radius)
+//   return circle
+// }
+
+//write a function that create a div with width and height of 20px, a radius of 10px and a background color of red
+function createDiv(width, height) {
+  const div = document.createElement('div')
+  div.setAttribute('style', 'background-color: red; width: ' + width + 'px; height: ' + height + 'px; border-radius: 10px;')
+  return div
+}
+
+const replaceCursorElement = document.getElementById('replaceCursor')
+  replaceCursorElement.addEventListener('click', () => {
+  const circle = createDiv(20, 20)
+  document.body.appendChild(circle)
+  document.body.style.cursor = "wait"
+})
