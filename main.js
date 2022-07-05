@@ -242,3 +242,60 @@ resetStorage.addEventListener('click', () => {
     e.remove()
   }
 })
+
+
+//write a function that create a list of questions
+//each question has a list of answers
+//and each answer returns a different value
+const questions = [
+  {
+      question: "What is the name of the main character in the game?",
+      answers: [
+          { text: "Mario", value: 1 },
+          { text: "Luigi", value: 2 },
+          { text: "Peach", value: 3 },
+          { text: "Toad", value: 4 }
+      ]
+  },
+  {
+      question: "What is the name of the game's main villain?",
+      answers: [
+          { text: "Bowser", value: 1 },
+          { text: "Koopa", value: 2 },
+          { text: "Kirby", value: 3 },
+          { text: "Yoshi", value: 4 }
+      ]
+  },
+  {
+      question: "What is the name of the game's main character?",
+      answers: [
+          { text: "Link", value: 1 },
+          { text: "Samus", value: 2 },
+          { text: "Mario", value: 3 },
+          { text: "Kirby", value: 4 }
+      ]
+  },
+  {
+      question: "What is the name of the game's main character?",
+      answers: [
+          { text: "Link", value: 1 },
+          { text: "Samus", value: 2 },
+          { text: "Mario", value: 3 },
+          { text: "Kirby", value: 4 }
+      ]
+  }
+];
+//write a function that display a question and create inputs for each answer
+const displayQuestion = () => {
+  const question = questions[currentQuestion];
+  const questionElement = document.getElementById("question");
+  questionElement.innerText = question.question;
+  question.answers.forEach(answer => {
+      const button = document.createElement("button");
+      button.innerText = answer.text;
+      button.value = answer.value;
+      button.classList.add("btn");
+      button.addEventListener("click", selectAnswer);
+      document.getElementById("answers").appendChild(button);
+  });
+}
