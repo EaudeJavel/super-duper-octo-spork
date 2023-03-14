@@ -285,6 +285,8 @@ const questions = [
       ]
   }
 ];
+
+
 //write a function that display a question and create inputs for each answer
 const displayQuestion = () => {
   const question = questions[currentQuestion];
@@ -298,4 +300,35 @@ const displayQuestion = () => {
       button.addEventListener("click", selectAnswer);
       document.getElementById("answers").appendChild(button);
   });
+}
+
+
+//Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+
+function twoSum(numbers, target) {
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[i] + numbers[j] === target) {
+        return [i, j]
+      }
+    }
+  }
+}
+
+
+//We need a function to collect these numbers, that may receive two integers a, b that defines the range [a,b] (inclusive) and outputs a list of the sorted numbers in the range that fulfills the property described above.
+
+function sumDigPow(a, b) {
+  const result = []
+  for (let i = a; i <= b; i++) {
+    const digits = i.toString().split('')
+    let sum = 0
+    for (let j = 0; j < digits.length; j++) {
+      sum += Math.pow(digits[j], j + 1)
+    }
+    if (sum === i) {
+      result.push(i)
+    }
+  }
+  return result
 }
